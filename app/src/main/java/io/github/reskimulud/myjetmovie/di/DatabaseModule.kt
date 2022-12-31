@@ -10,12 +10,17 @@ package io.github.reskimulud.myjetmovie.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase.Callback
+import androidx.sqlite.db.SupportSQLiteDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.reskimulud.myjetmovie.data.local.room.MovieDatabase
+import io.github.reskimulud.myjetmovie.data.local.room.dao.MovieDao
+import io.github.reskimulud.myjetmovie.utils.MovieCallback
+import javax.inject.Provider
 import javax.inject.Singleton
 
 @Module
@@ -25,12 +30,18 @@ class DatabaseModule {
     // movie database
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): MovieDatabase =
+    fun provideDatabase(
+        @ApplicationContext context: Context,
+        provider: Provider<MovieDao>
+    ): MovieDatabase =
         Room.databaseBuilder(
             context,
             MovieDatabase::class.java,
             "movies.db"
-        ).fallbackToDestructiveMigration()
+        ).addCallback(
+            MovieCallback(context, provider)
+        )
+            .fallbackToDestructiveMigration()
             .build()
 
     // movie dao
