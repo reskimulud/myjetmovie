@@ -19,7 +19,7 @@ import io.github.reskimulud.myjetmovie.ui.components.molecules.SearchBar
 
 @Composable
 fun MovieContent(
-    listTourism: List<Movie>,
+    listMovie: List<Movie>,
     navController: NavController,
     scaffoldState: ScaffoldState,
     query: String? = null,
@@ -30,9 +30,9 @@ fun MovieContent(
         if (query != null && onQueryChange != null) {
              SearchBar(query = query, onQueryChange = onQueryChange)
         }
-        when (listTourism.isEmpty()) {
+        when (listMovie.isEmpty()) {
             true -> EmptyContent()
-            false -> AvailableContent(listTourism, navController, scaffoldState, onUpdateFavoriteTourism)
+            false -> AvailableContent(listMovie, navController, scaffoldState, onUpdateFavoriteTourism)
         }
     }
 }

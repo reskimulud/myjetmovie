@@ -70,62 +70,61 @@ fun MovieItem(
                         .background(MaterialTheme.colors.primaryVariant)
                 ) {
                     Row(
-                        modifier = Modifier.padding(8.dp),
+                        modifier = Modifier.padding(4.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
                             text = genres,
-                            style = MaterialTheme.typography.caption,
+                            style = MaterialTheme.typography.overline,
                             color = MaterialTheme.colors.onPrimary
                         )
                     }
                 }
             }
 
-            Column(modifier = Modifier.padding(16.dp)) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+            Row(
+                modifier = Modifier.padding(14.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = title,
-                        style = MaterialTheme.typography.h6
+                        style = MaterialTheme.typography.subtitle2
                     )
-
-                    Icon(
-                        imageVector = if (isFavorite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder,
-                        tint = if (isFavorite) Color.Red else MaterialTheme.colors.onSurface,
-                        contentDescription = title,
-                        modifier = Modifier
-                            .size(30.dp)
-                            .clip(RoundedCornerShape(100))
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null
-                            ) {
-                                 onUpdateFavoriteMovie(id, !isFavorite)
-                                coroutineScope.launch {
-                                    scaffoldState.snackbarHostState.showSnackbar(
-                                        message = "$title ${if (isFavorite) "removed from" else "added as"} favorite ",
-                                        actionLabel = "Dismiss",
-                                        duration = SnackbarDuration.Short
-                                    )
-                                }
-                            },
-                    )
-                }
-
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    val nStar = round(voteAverage / 2.0)
-                    repeat(nStar.toInt()) {
-                        Icon(
-                            imageVector = Icons.Rounded.Star,
-                            contentDescription = title,
-                            tint = Color(0xFFFFCC00)
-                        )
+                    Row() {
+                        val nStar = round(voteAverage / 2.0)
+                        repeat(nStar.toInt()) {
+                            Icon(
+                                imageVector = Icons.Rounded.Star,
+                                contentDescription = title,
+                                tint = Color(0xFFFFCC00),
+                                modifier = Modifier.size(14.dp)
+                            )
+                        }
                     }
                 }
+                Spacer(modifier = Modifier.padding(4.dp))
+                Icon(
+                    imageVector = if (isFavorite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder,
+                    tint = if (isFavorite) Color.Red else MaterialTheme.colors.onSurface,
+                    contentDescription = title,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clip(RoundedCornerShape(100))
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) {
+                            onUpdateFavoriteMovie(id, !isFavorite)
+                            coroutineScope.launch {
+                                scaffoldState.snackbarHostState.showSnackbar(
+                                    message = "$title ${if (isFavorite) "removed from" else "added as"} favorite ",
+                                    actionLabel = "Dismiss",
+                                    duration = SnackbarDuration.Short
+                                )
+                            }
+                        },
+                )
             }
         }
     }

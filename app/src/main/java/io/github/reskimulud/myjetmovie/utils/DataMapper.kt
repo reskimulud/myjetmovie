@@ -10,6 +10,7 @@ package io.github.reskimulud.myjetmovie.utils
 
 import io.github.reskimulud.myjetmovie.data.local.entity.MovieEntity
 import io.github.reskimulud.myjetmovie.domain.model.Movie
+import io.github.reskimulud.myjetmovie.utils.Helper.createImageLink
 
 object DataMapper {
     fun MovieEntity.toDomain(): Movie =
@@ -26,8 +27,8 @@ object DataMapper {
             voteAverage = it.voteAverage,
             voteCount = it.voteCount,
             genres = it.genres,
-            posterPath = it.posterPath,
-            backdropPath = it.backdropPath,
+            posterPath = it.posterPath.createImageLink(),
+            backdropPath = it.backdropPath.createImageLink(),
             isFavorite = it.isFavorite
         )
     }

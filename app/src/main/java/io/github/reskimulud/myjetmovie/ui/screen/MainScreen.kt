@@ -30,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import io.github.reskimulud.myjetmovie.ui.navigation.NavigationItem
 import io.github.reskimulud.myjetmovie.ui.navigation.Screen
+import io.github.reskimulud.myjetmovie.ui.screen.home.HomeScreen
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
@@ -58,7 +59,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                // HomeScreen(navController, scaffoldState)
+                 HomeScreen(navController, scaffoldState)
             }
             composable(
                 route = Screen.Detail.route,

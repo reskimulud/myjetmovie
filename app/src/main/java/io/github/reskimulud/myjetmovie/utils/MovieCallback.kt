@@ -9,6 +9,7 @@
 package io.github.reskimulud.myjetmovie.utils
 
 import android.content.Context
+import android.util.Log
 import androidx.room.RoomDatabase.Callback
 import androidx.sqlite.db.SupportSQLiteDatabase
 import io.github.reskimulud.myjetmovie.R
@@ -46,18 +47,18 @@ class MovieCallback(
             if (jsonArray != null) {
                 for (i in 0 until jsonArray.length()) {
                     val item = jsonArray.getJSONObject(i)
+                    Log.e("PopulateData", "title : ${item.getString("title")}")
                     dao.insertAll(
                         MovieEntity(
-                            item.getInt("id"),
-                            item.getString("title"),
-                            item.getString("overview"),
-                            item.getString("release_date"),
-                            item.getDouble("vote_average"),
-                            item.getLong("vote_count"),
-                            item.getString("genres"),
-                            item.getString("poster_path"),
-                            item.getString("backdrop_path"),
-                            false
+                            title = item.getString("title"),
+                            overview = item.getString("overview"),
+                            releaseDate = item.getString("release_date"),
+                            voteAverage = item.getDouble("vote_average"),
+                            voteCount = item.getLong("vote_count"),
+                            genres = item.getString("genres"),
+                            posterPath = item.getString("poster_path"),
+                            backdropPath = item.getString("backdrop_path"),
+                            isFavorite = false
                         )
                     )
                 }

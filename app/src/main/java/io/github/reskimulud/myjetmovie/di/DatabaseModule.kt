@@ -38,9 +38,7 @@ class DatabaseModule {
             "movies.db"
         ).addCallback(
             MovieCallback(context, provider)
-        )
-            .fallbackToDestructiveMigration()
-            .build()
+        ).build()
 
     // movie dao
     @Provides
