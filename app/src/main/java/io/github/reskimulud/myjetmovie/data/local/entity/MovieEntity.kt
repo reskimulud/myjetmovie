@@ -50,5 +50,9 @@ data class MovieEntity(
 
     @NonNull
     @ColumnInfo(name = "backdrop_path")
-    val backdropPath: String
+    val backdropPath: String,
+
+    @NonNull
+    @ColumnInfo(name = "is_favorite")
+    val isFavorite: Boolean
 )

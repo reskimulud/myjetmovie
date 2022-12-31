@@ -56,7 +56,8 @@ class MovieCallback(
                             item.getLong("vote_count"),
                             item.getString("genres"),
                             item.getString("poster_path"),
-                            item.getString("backdrop_path")
+                            item.getString("backdrop_path"),
+                            false
                         )
                     )
                 }
