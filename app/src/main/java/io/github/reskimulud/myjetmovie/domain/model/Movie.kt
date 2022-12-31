@@ -17,5 +17,6 @@ data class Movie(
     val voteCount: Long,
     val genres: String,
     val posterPath: String,
-    val backdropPath: String
+    val backdropPath: String,
+    val isFavorite: Boolean
 )

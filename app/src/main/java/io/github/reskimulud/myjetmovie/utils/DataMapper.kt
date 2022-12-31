@@ -14,7 +14,7 @@ import io.github.reskimulud.myjetmovie.domain.model.Movie
 object DataMapper {
     fun MovieEntity.toDomain(): Movie =
         Movie(
-            id, title, overview, releaseDate, voteAverage, voteCount, genres, posterPath, backdropPath
+            id, title, overview, releaseDate, voteAverage, voteCount, genres, posterPath, backdropPath, isFavorite
         )
 
     fun List<MovieEntity>.toDomain(): List<Movie> = map {
@@ -27,7 +27,8 @@ object DataMapper {
             voteCount = it.voteCount,
             genres = it.genres,
             posterPath = it.posterPath,
-            backdropPath = it.backdropPath
+            backdropPath = it.backdropPath,
+            isFavorite = it.isFavorite
         )
     }
 }
