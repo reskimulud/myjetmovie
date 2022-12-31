@@ -36,18 +36,28 @@ class MovieCallback(
         super.onCreate(db)
         applicationScope.launch(Dispatchers.IO) {
             val dao = provider.get()
-            fillWithStartingData(context, dao)
+            populateData(context, dao)
         }
     }
 
-    private fun fillWithStartingData(context: Context, dao: MovieDao) {
+    private fun populateData(context: Context, dao: MovieDao) {
         val jsonArray = loadJsonArray(context)
         try {
             if (jsonArray != null) {
                 for (i in 0 until jsonArray.length()) {
                     val item = jsonArray.getJSONObject(i)
                     dao.insertAll(
-                        MovieEntity(item.getString("id"))
+                        MovieEntity(
+                            item.getInt("id"),
+                            item.getString("title"),
+                            item.getString("overview"),
+                            item.getString("release_date"),
+                            item.getDouble("vote_average"),
+                            item.getLong("vote_count"),
+                            item.getString("genres"),
+                            item.getString("poster_path"),
+                            item.getString("backdrop_path")
+                        )
                     )
                 }
             }

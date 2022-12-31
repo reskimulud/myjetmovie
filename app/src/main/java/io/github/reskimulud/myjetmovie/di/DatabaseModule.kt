@@ -10,8 +10,6 @@ package io.github.reskimulud.myjetmovie.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase.Callback
-import androidx.sqlite.db.SupportSQLiteDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

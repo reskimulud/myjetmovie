@@ -15,8 +15,40 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "movies")
 data class MovieEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")
-    val id: String
+    val id: Int,
+
+    @NonNull
+    @ColumnInfo(name = "title")
+    val title: String,
+
+    @NonNull
+    @ColumnInfo(name = "overview")
+    val overview: String,
+
+    @NonNull
+    @ColumnInfo(name = "release_date")
+    val releaseDate: String,
+
+    @NonNull
+    @ColumnInfo(name = "vote_average")
+    val voteAverage: Double,
+
+    @NonNull
+    @ColumnInfo(name = "vote_count")
+    val voteCount: Long,
+
+    @NonNull
+    @ColumnInfo(name = "genres")
+    val genres: String,
+
+    @NonNull
+    @ColumnInfo(name = "poster_path")
+    val posterPath: String,
+
+    @NonNull
+    @ColumnInfo(name = "backdrop_path")
+    val backdropPath: String
 )

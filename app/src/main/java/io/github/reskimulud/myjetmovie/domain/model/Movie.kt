@@ -9,5 +9,13 @@
 package io.github.reskimulud.myjetmovie.domain.model
 
 data class Movie(
-    val id: String
+    val id: Int,
+    val title: String,
+    val overview: String,
+    val releaseDate: String,
+    val voteAverage: Double,
+    val voteCount: Long,
+    val genres: String,
+    val posterPath: String,
+    val backdropPath: String
 )
