@@ -31,6 +31,7 @@ import androidx.navigation.navArgument
 import io.github.reskimulud.myjetmovie.ui.navigation.NavigationItem
 import io.github.reskimulud.myjetmovie.ui.navigation.Screen
 import io.github.reskimulud.myjetmovie.ui.screen.home.HomeScreen
+import io.github.reskimulud.myjetmovie.ui.screen.profile.ProfileScreen
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
@@ -74,7 +75,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 // FavoriteScreen(navController, scaffoldState)
             }
             composable(Screen.Profile.route) {
-                // ProfileScreen()
+                 ProfileScreen()
             }
         }
     }

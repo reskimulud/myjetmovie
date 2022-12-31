@@ -91,7 +91,7 @@ fun MovieItem(
                         text = title,
                         style = MaterialTheme.typography.subtitle2
                     )
-                    Row() {
+                    Row {
                         val nStar = round(voteAverage / 2.0)
                         repeat(nStar.toInt()) {
                             Icon(
