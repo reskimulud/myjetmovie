@@ -30,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import io.github.reskimulud.myjetmovie.ui.navigation.NavigationItem
 import io.github.reskimulud.myjetmovie.ui.navigation.Screen
+import io.github.reskimulud.myjetmovie.ui.screen.favorite.FavoriteScreen
 import io.github.reskimulud.myjetmovie.ui.screen.home.HomeScreen
 import io.github.reskimulud.myjetmovie.ui.screen.profile.ProfileScreen
 
@@ -68,11 +69,11 @@ fun MainScreen(modifier: Modifier = Modifier) {
                     navArgument("movieId") { type = NavType.IntType }
                 )
             ) {
-                val tourismId = it.arguments?.getInt("movieId") ?: 0
-                // DetailScreen(tourismId, navController, scaffoldState)
+                val movieId = it.arguments?.getInt("movieId") ?: 0
+                // DetailScreen(movieId, navController, scaffoldState)
             }
             composable(Screen.Favorite.route) {
-                // FavoriteScreen(navController, scaffoldState)
+                 FavoriteScreen(navController, scaffoldState)
             }
             composable(Screen.Profile.route) {
                  ProfileScreen()
