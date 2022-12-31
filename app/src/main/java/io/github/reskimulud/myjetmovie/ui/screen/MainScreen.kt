@@ -30,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import io.github.reskimulud.myjetmovie.ui.navigation.NavigationItem
 import io.github.reskimulud.myjetmovie.ui.navigation.Screen
+import io.github.reskimulud.myjetmovie.ui.screen.detailmovie.DetailMovieScreen
 import io.github.reskimulud.myjetmovie.ui.screen.favorite.FavoriteScreen
 import io.github.reskimulud.myjetmovie.ui.screen.home.HomeScreen
 import io.github.reskimulud.myjetmovie.ui.screen.profile.ProfileScreen
@@ -70,7 +71,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 )
             ) {
                 val movieId = it.arguments?.getInt("movieId") ?: 0
-                // DetailScreen(movieId, navController, scaffoldState)
+                 DetailMovieScreen(movieId, scaffoldState)
             }
             composable(Screen.Favorite.route) {
                  FavoriteScreen(navController, scaffoldState)
